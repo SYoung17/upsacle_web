@@ -1,0 +1,36 @@
+let dropbox;
+
+dropbox = document.getElementById("fileElem");
+dropbox.addEventListener("dragenter", dragenter, false);
+dropbox.addEventListener("dragover", dragover, false);
+dropbox.addEventListener("drop", drop, false);
+
+// input에 붙일 드래그 앤 드롭 이벤트
+function dragenter(e) { e.stopPropagation(); e.preventDefault(); }
+function dragover(e) { e.stopPropagation(); e.preventDefault(); }
+function drop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+
+  const dt = e.dataTransfer;
+  const files = dt.files;
+  
+  handleFiles(files);
+}
+
+/* style.css */
+
+/* label 스타일 조정 */
+.button {
+    display: flex;
+    justify-content: center;
+}
+label {
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* 못생긴 기존 input 숨기기 */
+#chooseFile {
+    visibility: hidden;
+}
